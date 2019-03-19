@@ -20,5 +20,16 @@ namespace DiceVsYosanoRemake
 
             return (Mode)(((int)mode + 1) % count);
         }
+
+        public static string ToName(this Mode mode)
+        {
+            return mode switch
+            {
+                Mode.Normal => "ノーマルモード",
+                Mode.Yosano => "与謝野モード",
+
+                _ => throw new ArgumentException("存在しないモードです")
+            };
+        }
     }
 }
