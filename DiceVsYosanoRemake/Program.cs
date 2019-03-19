@@ -1,16 +1,19 @@
 ﻿using DxLibUtilities;
 using DxLibDLL;
 using DxLogic;
-using Diagram;
+using Graphics;
 using Utilities;
+using DiceVsYosanoRemake.Scenes;
 
 public class Program
 {
     public void Run()
     {
+        var manager = new SceneManager<MyData>(new Title());
+
         while (DxSystem.Update())
         {
-            new Circle(Input.Mouse.Point, 10).Draw(Palette.Blue);
+            manager.UpdateAndDraw();
         }
     }
 }
