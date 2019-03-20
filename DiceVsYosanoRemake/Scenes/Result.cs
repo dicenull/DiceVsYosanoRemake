@@ -22,6 +22,8 @@ namespace DiceVsYosanoRemake.Scenes
         public Result()
         {
             resultDices[Data.Winner].Scaled(3, 3);
+
+            Data.TitleMusic.Play(PlayType.Loop);
         }
 
         public override void Draw()
@@ -38,6 +40,7 @@ namespace DiceVsYosanoRemake.Scenes
         {
             if(Input.Key.IsDown(ConsoleKey.Spacebar))
             {
+                Data.TitleMusic.Stop();
                 return new Title();
             }
 

@@ -19,11 +19,11 @@ namespace DiceVsYosanoRemake
 
         public Color Color { get; }
 
-        public int Speed { get; set; } = 2;
+        public int Speed { get; set; } = 3;
 
         public int ShotSize { get; private set; } = 7;
 
-        private int maxHp = 1;
+        private int maxHp = 100;
         public int Hp { get; private set; }
 
         public Rectangle Area { get; set; }

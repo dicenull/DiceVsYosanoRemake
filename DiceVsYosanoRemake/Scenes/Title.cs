@@ -14,8 +14,6 @@ namespace DiceVsYosanoRemake.Scenes
             new Texture("Resource/TitleYosano.jpg")
         };
 
-        private Audio bgm = new Audio("Resource/title.mp3");
-
         private Text titleText = new Text(25);
 
         public Title()
@@ -29,13 +27,17 @@ namespace DiceVsYosanoRemake.Scenes
                 image.Scaled(defaultSize);
             }
 
-            bgm.Play(PlayType.Loop);
+            Data.TitleMusic = new Audio("Resource/title.mp3");
+            Data.MainMusic = new Audio("Resource/main.mp3");
+
+            Data.TitleMusic.Play(PlayType.Loop);
         }
 
         public override SceneBase<MyData> Update()
         {
             if (Input.Key.IsDown(ConsoleKey.Enter))
             {
+                Data.TitleMusic.Stop();
                 return new Game();
             }
 

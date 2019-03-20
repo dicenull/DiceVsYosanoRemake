@@ -34,6 +34,8 @@ namespace DiceVsYosanoRemake.Scenes
 
                 players[i] = new DicePlayer(spawnData[i], diceList, colors[i]);
             }
+
+            Data.MainMusic.Play(PlayType.Loop);
         }
 
         public override SceneBase<MyData> Update()
@@ -53,6 +55,7 @@ namespace DiceVsYosanoRemake.Scenes
                     int other = 1 - i;
                     Data.Winner = other;
 
+                    Data.MainMusic.Stop();
                     return new Result();
                 }
 
