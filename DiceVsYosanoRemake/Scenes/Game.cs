@@ -11,6 +11,7 @@ namespace DiceVsYosanoRemake.Scenes
     {
         private DicePlayer[] players = new DicePlayer[2];
         private Rectangle gameField = new Rectangle(0, 70, Window.Size.X, Window.Size.Y - 70);
+        private Text gameText = new Text(18);
 
         public Game()
         {
@@ -66,10 +67,22 @@ namespace DiceVsYosanoRemake.Scenes
         {
             gameField.DrawFrame(Palette.White);
 
-            foreach(var player in players)
+            var statusOrigin = new[]
             {
+                new Vector2D(10, 10),
+                new Vector2D(530, 10)
+            };
+
+            for (int i = 0; i < 2; i++)
+            {
+                var player = players[i];
+
                 player.Draw();
+
+                gameText.Draw($"HP : {player.Hp}", statusOrigin[i], player.HpColor());
+                gameText.Draw($"ShotSize:", statusOrigin[i] + (0, 30), Palette.White);
             }
+
         }
     }
 }

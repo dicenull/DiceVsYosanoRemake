@@ -17,6 +17,9 @@ namespace DiceVsYosanoRemake
 
         public int Speed { get; set; } = 2;
 
+        private int maxHp = 100;
+        public int Hp { get; private set; }
+
         public Rectangle Area { get; set; }
 
         public void Move(Direction dir)
@@ -26,6 +29,13 @@ namespace DiceVsYosanoRemake
             statusTexture = diceList[(int)dir + 1];
         }
 
+        public void Hit(int damage)
+        {
+            Hp -= damage;
+
+            if (Hp < 0) Hp = 0;
+        }
+
         public void Draw()
         {
             statusTexture.Scaled(new Vector2D(Area.Size.w, Area.Size.h));
@@ -33,6 +43,21 @@ namespace DiceVsYosanoRemake
             statusTexture.Draw(Area.TopLeft);
 
             statusTexture = diceList[0];
+        }
+
+        public Color HpColor()
+        {
+            if(Hp > maxHp / 2)
+            {
+                return Palette.Blue;
+            }
+
+            if(Hp > maxHp / 4)
+            {
+                return Palette.Yellow;
+            }
+
+            return Palette.Red;
         }
         
         public DicePlayer(Rectangle area, IEnumerable<Texture> diceList)
@@ -46,6 +71,8 @@ namespace DiceVsYosanoRemake
 
             // 状態を初期化
             statusTexture = this.diceList[0];
+
+            Hp = maxHp;
         }
     }
 }
