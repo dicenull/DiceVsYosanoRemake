@@ -2,12 +2,15 @@
 using DxLogic;
 using Graphics;
 using System.Linq;
+using DxLibUtilities;
+using Utilities;
 
 namespace DiceVsYosanoRemake.Scenes
 {
     class Game : SceneBase<MyData>
     {
         private DicePlayer[] players = new DicePlayer[2];
+        private Rectangle gameField = new Rectangle(0, 70, Window.Size.X, Window.Size.Y - 70);
 
         public Game()
         {
@@ -40,9 +43,17 @@ namespace DiceVsYosanoRemake.Scenes
                 for(int k = 0;k < moveKeysList[i].Length;k++)
                 {
                     var moveKey = moveKeysList[i][k];
+                    var moveDir = (Direction)k;
+                    var area = players[i].Area;
 
                     if (Input.Key.IsPressed(moveKey))
                     {
+                        // 動かした先がフィールド外の場合、動かさない
+                        if (!gameField.Contains((Rectangle)area.MovedBy(moveDir.ToVector())))
+                        {
+                            continue;
+                        }
+
                         players[i].Move((Direction)k);
                     }
                 }
@@ -53,6 +64,8 @@ namespace DiceVsYosanoRemake.Scenes
 
         public override void Draw()
         {
+            gameField.DrawFrame(Palette.White);
+
             foreach(var player in players)
             {
                 player.Draw();

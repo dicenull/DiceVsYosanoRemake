@@ -17,20 +17,20 @@ namespace DiceVsYosanoRemake
 
         public int Speed { get; set; } = 2;
 
-        public Rectangle PlayerArea { get; set; }
+        public Rectangle Area { get; set; }
 
         public void Move(Direction dir)
         {
-            PlayerArea.TopLeft += dir.ToVector() * Speed;
+            Area.TopLeft += dir.ToVector() * Speed;
 
             statusTexture = diceList[(int)dir + 1];
         }
 
         public void Draw()
         {
-            statusTexture.Scaled(new Vector2D(PlayerArea.Size.w, PlayerArea.Size.h));
+            statusTexture.Scaled(new Vector2D(Area.Size.w, Area.Size.h));
 
-            statusTexture.Draw(PlayerArea.TopLeft);
+            statusTexture.Draw(Area.TopLeft);
 
             statusTexture = diceList[0];
         }
@@ -42,7 +42,7 @@ namespace DiceVsYosanoRemake
 
             this.diceList.Remove(damagedDice);
 
-            PlayerArea = area;
+            Area = area;
 
             // 状態を初期化
             statusTexture = this.diceList[0];
