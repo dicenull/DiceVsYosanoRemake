@@ -15,7 +15,11 @@ namespace DiceVsYosanoRemake
 
         private Texture statusTexture;
 
+        public List<Bullet> Bullets { get; private set; } = new List<Bullet>();
+
         public int Speed { get; set; } = 2;
+
+        public int ShotSize { get; private set; } = 15;
 
         private int maxHp = 100;
         public int Hp { get; private set; }
@@ -58,6 +62,20 @@ namespace DiceVsYosanoRemake
             }
 
             return Palette.Red;
+        }
+
+        public void Shot()
+        {
+            if(Bullets.Count() != 0)
+            {
+                return;
+            }
+
+            // 四方向に弾を生成する
+            foreach (Direction dir in Enum.GetValues(typeof(Direction)))
+            {
+                Bullets.Add(new Bullet(new Rectangle(Area.Center, (ShotSize, ShotSize), Location.Center), dir));
+            }
         }
         
         public DicePlayer(Rectangle area, IEnumerable<Texture> diceList)

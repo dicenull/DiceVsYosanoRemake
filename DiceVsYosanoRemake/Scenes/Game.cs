@@ -38,6 +38,7 @@ namespace DiceVsYosanoRemake.Scenes
                 new[] { ConsoleKey.UpArrow, ConsoleKey.RightArrow, ConsoleKey.DownArrow, ConsoleKey.LeftArrow },
                 new[] { ConsoleKey.W, ConsoleKey.D, ConsoleKey.S, ConsoleKey.A }
             };
+            var shotKeys = new[] { ConsoleKey.NumPad0, ConsoleKey.Spacebar };
 
             for(int i = 0;i < 2;i++)
             {
@@ -57,6 +58,17 @@ namespace DiceVsYosanoRemake.Scenes
 
                         players[i].Move((Direction)k);
                     }
+                }
+
+
+                if(Input.Key.IsPressed(shotKeys[i]))
+                {
+                    players[i].Shot();
+                }
+
+                foreach(var bullet in players[i].Bullets)
+                {
+                    bullet.Move();
                 }
             }
 
@@ -78,6 +90,12 @@ namespace DiceVsYosanoRemake.Scenes
                 var player = players[i];
 
                 player.Draw();
+
+
+                foreach(var bullet in player.Bullets)
+                {
+                    bullet.Draw();
+                }
 
                 gameText.Draw($"HP : {player.Hp}", statusOrigin[i], player.HpColor());
                 gameText.Draw($"ShotSize:", statusOrigin[i] + (0, 30), Palette.White);
