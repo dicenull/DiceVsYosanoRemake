@@ -21,13 +21,18 @@ namespace DiceVsYosanoRemake.Scenes
                 new Rectangle(600, 400, 32, 32),
                 new Rectangle(100, 100, 32, 32)
             };
+            var colors = new[]
+            {
+                Palette.White,
+                Palette.Green
+            };
 
             for (int i = 0; i < 2; i++)
             {
                 var diceList = Texture.LoadDivision($"Resource/DiceList{i + 1}.png", 5, 1).ToList();
                 diceList.Add(damageDice);
 
-                players[i] = new DicePlayer(spawnData[i], diceList);
+                players[i] = new DicePlayer(spawnData[i], diceList, colors[i]);
             }
         }
 
@@ -99,8 +104,8 @@ namespace DiceVsYosanoRemake.Scenes
 
             var statusOrigin = new[]
             {
-                new Vector2D(10, 10),
-                new Vector2D(530, 10)
+                new Vector2D(530, 10),
+                new Vector2D(10, 10)
             };
 
             for (int i = 0; i < 2; i++)

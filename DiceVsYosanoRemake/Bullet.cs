@@ -18,9 +18,11 @@ namespace DiceVsYosanoRemake
 
         public Vector2D Position { get { return Area.Center; } }
 
+        public Color Color { get; }
+
         public void Draw()
         {
-            Area.Draw(Palette.White);
+            Area.Draw(Color);
         }
 
         public void Move()
@@ -28,10 +30,11 @@ namespace DiceVsYosanoRemake
             Area.MoveBy(moveDir.ToVector() * Speed);
         }
 
-        public Bullet(Rectangle area, Direction moveDir)
+        public Bullet(Rectangle area, Direction moveDir, Color color)
         {
             Area = area;
             this.moveDir = moveDir;
+            Color = color;
         }
     }
 }

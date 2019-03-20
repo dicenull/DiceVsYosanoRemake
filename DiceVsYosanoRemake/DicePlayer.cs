@@ -17,9 +17,11 @@ namespace DiceVsYosanoRemake
 
         public List<Bullet> Bullets { get; private set; } = new List<Bullet>();
 
+        public Color Color { get; }
+
         public int Speed { get; set; } = 2;
 
-        public int ShotSize { get; private set; } = 15;
+        public int ShotSize { get; private set; } = 7;
 
         private int maxHp = 100;
         public int Hp { get; private set; }
@@ -87,12 +89,13 @@ namespace DiceVsYosanoRemake
             // 四方向に弾を生成する
             foreach (Direction dir in Enum.GetValues(typeof(Direction)))
             {
-                Bullets.Add(new Bullet(new Rectangle(Area.Center, (ShotSize, ShotSize), Location.Center), dir));
+                var bulletArea = new Rectangle(Area.Center, (ShotSize, ShotSize), Location.Center);
+                Bullets.Add(new Bullet(bulletArea, dir, Color));
             }
         }
 
         
-        public DicePlayer(Rectangle area, IEnumerable<Texture> diceList)
+        public DicePlayer(Rectangle area, IEnumerable<Texture> diceList, Color color)
         {
             this.diceList = diceList.ToList();
             this.damagedDice = diceList.Last();
@@ -105,6 +108,8 @@ namespace DiceVsYosanoRemake
             statusTexture = this.diceList[0];
 
             Hp = maxHp;
+
+            Color = color;
         }
     }
 }

@@ -9,5 +9,7 @@ namespace DiceVsYosanoRemake.Scenes
     struct MyData
     {
         public Mode GameMode { get; set; }
+
+
     }
 }
