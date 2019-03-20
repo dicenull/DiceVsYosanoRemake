@@ -50,11 +50,16 @@ namespace DiceVsYosanoRemake
 
         public void Draw()
         {
+            // プレイヤー自身の描画
             statusTexture.Scaled(new Vector2D(Area.Size.w, Area.Size.h));
 
             statusTexture.Draw(Area.TopLeft);
 
             statusTexture = diceList[0];
+
+            // HPバーの描画
+            (int w, int h) barSize = ((int)(Area.Size.w * ((double)Hp / maxHp)), Area.Size.h / 6);
+            new Rectangle(Area.TopLeft - (0, Area.Size.w / 2), barSize).Draw(HpColor());
         }
 
         public Color HpColor()
