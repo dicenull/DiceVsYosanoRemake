@@ -42,6 +42,7 @@ namespace DiceVsYosanoRemake.Scenes
 
             for(int i = 0;i < 2;i++)
             {
+                // プレイヤーの移動
                 for(int k = 0;k < moveKeysList[i].Length;k++)
                 {
                     var moveKey = moveKeysList[i][k];
@@ -60,7 +61,6 @@ namespace DiceVsYosanoRemake.Scenes
                     }
                 }
 
-
                 if(Input.Key.IsPressed(shotKeys[i]))
                 {
                     players[i].Shot();
@@ -76,6 +76,16 @@ namespace DiceVsYosanoRemake.Scenes
                     if (!gameField.Contains(bullet.Area))
                     {
                         players[i].Bullets.Remove(bullet);
+                    }
+                }
+
+                // 相手の弾にあたっていたらダメージ
+                int flip = 1 - i;
+                foreach(var bullet in players[flip].Bullets)
+                {
+                    if(players[i].Area.Intersects(bullet.Area))
+                    {
+                        players[i].Hit(damage: 1);
                     }
                 }
             }

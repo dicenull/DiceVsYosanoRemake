@@ -30,6 +30,12 @@ namespace DiceVsYosanoRemake
         {
             Area.TopLeft += dir.ToVector() * Speed;
 
+            // 弾も自機の移動を受けるようにする
+            foreach(var bullet in Bullets)
+            {
+                bullet.Area.TopLeft += dir.ToVector() * Speed;
+            }
+
             statusTexture = diceList[(int)dir + 1];
         }
 
@@ -38,6 +44,8 @@ namespace DiceVsYosanoRemake
             Hp -= damage;
 
             if (Hp < 0) Hp = 0;
+
+            statusTexture = damagedDice;
         }
 
         public void Draw()
