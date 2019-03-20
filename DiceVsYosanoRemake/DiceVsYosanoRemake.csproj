@@ -68,6 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
+    <Compile Include="DicePlayer.cs" />
     <Compile Include="DxMain.cs" />
     <Compile Include="Mode.cs" />
     <Compile Include="Program.cs" />
