@@ -47,6 +47,15 @@ namespace DiceVsYosanoRemake.Scenes
 
             for(int i = 0;i < 2;i++)
             {
+                // ゲームオーバーの判定
+                if(players[i].Hp <= 0)
+                {
+                    int other = 1 - i;
+                    Data.Winner = other;
+
+                    return new Result();
+                }
+
                 // プレイヤーの移動
                 for(int k = 0;k < moveKeysList[i].Length;k++)
                 {

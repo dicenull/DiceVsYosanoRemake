@@ -44,6 +44,12 @@ namespace DiceVsYosanoRemake.Scenes
                 Data.GameMode = Data.GameMode.NextMode();
             }
 
+            if (Input.Key.IsDown(ConsoleKey.Escape))
+            {
+                DxSystem.Exit();
+                return this;
+            }
+
             return this;
         }
 

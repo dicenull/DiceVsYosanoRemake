@@ -23,7 +23,7 @@ namespace DiceVsYosanoRemake
 
         public int ShotSize { get; private set; } = 7;
 
-        private int maxHp = 100;
+        private int maxHp = 1;
         public int Hp { get; private set; }
 
         public Rectangle Area { get; set; }

@@ -78,6 +78,7 @@
     <Compile Include="RectExtend.cs" />
     <Compile Include="Scenes\Game.cs" />
     <Compile Include="Scenes\MyData.cs" />
+    <Compile Include="Scenes\Result.cs" />
     <Compile Include="Scenes\Title.cs" />
   </ItemGroup>
   <ItemGroup>

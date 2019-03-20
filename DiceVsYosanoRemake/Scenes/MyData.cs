@@ -10,6 +10,6 @@ namespace DiceVsYosanoRemake.Scenes
     {
         public Mode GameMode { get; set; }
 
-
+        public int Winner { get; set; }
     }
 }
