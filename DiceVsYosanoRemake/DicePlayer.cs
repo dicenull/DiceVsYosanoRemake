@@ -77,6 +77,7 @@ namespace DiceVsYosanoRemake
                 Bullets.Add(new Bullet(new Rectangle(Area.Center, (ShotSize, ShotSize), Location.Center), dir));
             }
         }
+
         
         public DicePlayer(Rectangle area, IEnumerable<Texture> diceList)
         {

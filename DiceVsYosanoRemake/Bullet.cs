@@ -14,7 +14,7 @@ namespace DiceVsYosanoRemake
 
         public Rectangle Area { get; }
 
-        public int Speed { get; set; } = 3;
+        public int Speed { get; set; } = 4;
 
         public Vector2D Position { get { return Area.Center; } }
 

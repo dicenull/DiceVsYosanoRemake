@@ -66,9 +66,17 @@ namespace DiceVsYosanoRemake.Scenes
                     players[i].Shot();
                 }
 
-                foreach(var bullet in players[i].Bullets)
+                // 弾の消去でエラーが起きないよう逆順でループ
+                for (int k = players[i].Bullets.Count - 1; k >= 0; k--)
                 {
+                    var bullet = players[i].Bullets[k];
+
                     bullet.Move();
+
+                    if (!gameField.Contains(bullet.Area))
+                    {
+                        players[i].Bullets.Remove(bullet);
+                    }
                 }
             }
 
