@@ -9,6 +9,12 @@ namespace DiceVsYosanoRemake.Scenes
 {
     class VsYosanoGame : SceneBase<MyData>
     {
+        public VsYosanoGame(int yosanoHp)
+            : base()
+        {
+
+        }
+
         public override void Draw()
         {
             

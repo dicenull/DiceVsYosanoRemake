@@ -82,6 +82,7 @@
     <Compile Include="Scenes\Result.cs" />
     <Compile Include="Scenes\Title.cs" />
     <Compile Include="Scenes\VsYosanoGame.cs" />
+    <Compile Include="Scenes\YosanoHpInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
