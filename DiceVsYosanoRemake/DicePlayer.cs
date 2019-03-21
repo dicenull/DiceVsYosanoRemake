@@ -33,9 +33,14 @@ namespace DiceVsYosanoRemake
             ShotSize++;
         }
 
+        public Vector2D MoveAmount(Direction dir)
+        {
+            return dir.ToVector() * Speed;
+        }
+
         public void Move(Direction dir)
         {
-            Area.TopLeft += dir.ToVector() * Speed;
+            Area.TopLeft += MoveAmount(dir);
 
             // 弾も自機の移動を受けるようにする
             foreach(var bullet in Bullets)

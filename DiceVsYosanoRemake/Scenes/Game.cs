@@ -72,7 +72,7 @@ namespace DiceVsYosanoRemake.Scenes
                     if (Input.Key.IsPressed(moveKey))
                     {
                         // 動かした先がフィールド外の場合、動かさない
-                        if (!gameField.Contains((Rectangle)area.MovedBy(moveDir.ToVector())))
+                        if (!gameField.Contains((Rectangle)area.MovedBy(players[i].MoveAmount(moveDir))))
                         {
                             continue;
                         }
