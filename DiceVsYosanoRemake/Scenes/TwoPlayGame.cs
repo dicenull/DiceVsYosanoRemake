@@ -7,14 +7,14 @@ using Utilities;
 
 namespace DiceVsYosanoRemake.Scenes
 {
-    class Game : SceneBase<MyData>
+    class TwoPlayGame : SceneBase<MyData>
     {
         private DicePlayer[] players = new DicePlayer[2];
         private BulletItem item;
         private Rectangle gameField = new Rectangle(0, 70, Window.Size.X, Window.Size.Y - 70);
         private Text gameText = new Text(18);
 
-        public Game()
+        public TwoPlayGame()
         {
             var damageDice = new Texture("Resource/DamageDice.png");
             var spawnData = new[]

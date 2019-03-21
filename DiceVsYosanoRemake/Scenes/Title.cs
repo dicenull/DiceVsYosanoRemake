@@ -38,7 +38,7 @@ namespace DiceVsYosanoRemake.Scenes
             if (Input.Key.IsDown(ConsoleKey.Enter))
             {
                 Data.TitleMusic.Stop();
-                return new Game();
+                return new TwoPlayGame();
             }
 
             if (Input.Key.IsDown(ConsoleKey.Spacebar))
