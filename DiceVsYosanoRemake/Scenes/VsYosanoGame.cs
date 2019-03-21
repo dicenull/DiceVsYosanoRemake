@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DiceVsYosanoRemake.Scenes
 {
-    class VsYosanoGame : SceneBase<MyData>
+    class VsYosanoGame : Game
     {
         public VsYosanoGame(int yosanoHp)
             : base()
@@ -23,6 +23,16 @@ namespace DiceVsYosanoRemake.Scenes
         public override SceneBase<MyData> Update()
         {
             return this;
+        }
+
+        protected override void HitDecision()
+        {
+            
+        }
+
+        protected override bool IsGameOver()
+        {
+            return false;
         }
     }
 }
