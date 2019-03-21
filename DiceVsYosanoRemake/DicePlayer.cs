@@ -6,25 +6,20 @@ using Utilities;
 
 namespace DiceVsYosanoRemake
 {
-    public class DicePlayer
+    public class DicePlayer : CharacterBase<Rectangle>
     {
         private List<Texture> diceList;
         private Texture damagedDice;
 
         private Texture statusTexture;
 
+        private int maxHp { get; } = 100;
+
         public List<Bullet> Bullets { get; private set; } = new List<Bullet>();
 
         public Color Color { get; }
 
-        public int Speed { get; set; } = 3;
-
         public int ShotSize { get; private set; } = 7;
-
-        private int maxHp = 100;
-        public int Hp { get; private set; }
-
-        public Rectangle Area { get; set; }
 
         public void CollectItem()
         {
@@ -58,7 +53,7 @@ namespace DiceVsYosanoRemake
             statusTexture = damagedDice;
         }
 
-        public void Draw()
+        public override void Draw()
         {
             // プレイヤー自身の描画
             statusTexture.Scaled(new Vector2D(Area.Size.w, Area.Size.h));

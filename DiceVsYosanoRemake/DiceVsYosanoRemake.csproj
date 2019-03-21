@@ -73,6 +73,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="DicePlayer.cs" />
     <Compile Include="DxMain.cs" />
+    <Compile Include="CharacterBase.cs" />
     <Compile Include="Mode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Scenes\Title.cs" />
     <Compile Include="Scenes\VsYosanoGame.cs" />
     <Compile Include="Scenes\YosanoHpInput.cs" />
+    <Compile Include="YosanoEnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

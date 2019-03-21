@@ -32,6 +32,18 @@ namespace DiceVsYosanoRemake.Scenes
 
         protected override bool IsGameOver()
         {
+            for (int i = 0; i < 2; i++)
+            {
+                if (players[i].Hp <= 0)
+                {
+                    Data.Winner = 1;
+
+                    return true;
+                }
+
+            }
+
+
             return false;
         }
     }

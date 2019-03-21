@@ -57,6 +57,7 @@ namespace DiceVsYosanoRemake.Scenes
 
             if(IsGameOver())
             {
+                Data.MainMusic.Stop();
                 return new Result();
             }
 

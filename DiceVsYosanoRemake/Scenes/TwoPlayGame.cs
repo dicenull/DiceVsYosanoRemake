@@ -34,7 +34,6 @@ namespace DiceVsYosanoRemake.Scenes
                     int other = 1 - i;
                     Data.Winner = other;
 
-                    Data.MainMusic.Stop();
                     return true;
                 }
 
