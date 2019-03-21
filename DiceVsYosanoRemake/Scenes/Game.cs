@@ -10,6 +10,7 @@ namespace DiceVsYosanoRemake.Scenes
     class Game : SceneBase<MyData>
     {
         private DicePlayer[] players = new DicePlayer[2];
+        private BulletItem item;
         private Rectangle gameField = new Rectangle(0, 70, Window.Size.X, Window.Size.Y - 70);
         private Text gameText = new Text(18);
 
@@ -34,6 +35,8 @@ namespace DiceVsYosanoRemake.Scenes
 
                 players[i] = new DicePlayer(spawnData[i], diceList, colors[i]);
             }
+
+            item = new BulletItem(gameField);
 
             Data.MainMusic.Play(PlayType.Loop);
         }
@@ -105,7 +108,16 @@ namespace DiceVsYosanoRemake.Scenes
                         players[i].Hit(damage: 1);
                     }
                 }
+
+                // アイテムを取得したら弾を大きくする
+                if(item.Enabled && players[i].Area.Intersects(item.Area))
+                {
+                    players[i].CollectItem();
+                    item.Collect();
+                }
             }
+
+            item.Update();
 
             return this;
         }
@@ -133,9 +145,10 @@ namespace DiceVsYosanoRemake.Scenes
                 }
 
                 gameText.Draw($"HP : {player.Hp}", statusOrigin[i], player.HpColor());
-                gameText.Draw($"ShotSize:", statusOrigin[i] + (0, 30), Palette.White);
+                gameText.Draw($"ShotSize: {player.ShotSize}", statusOrigin[i] + (0, 30), Palette.White);
             }
 
+            item.Draw();
         }
     }
 }

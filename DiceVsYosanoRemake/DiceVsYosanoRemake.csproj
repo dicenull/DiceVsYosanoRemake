@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bullet.cs" />
+    <Compile Include="BulletItem.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="DicePlayer.cs" />
     <Compile Include="DxMain.cs" />

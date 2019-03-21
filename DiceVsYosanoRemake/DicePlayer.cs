@@ -28,6 +28,11 @@ namespace DiceVsYosanoRemake
 
         public Rectangle Area { get; set; }
 
+        public void CollectItem()
+        {
+            ShotSize++;
+        }
+
         public void Move(Direction dir)
         {
             Area.TopLeft += dir.ToVector() * Speed;
