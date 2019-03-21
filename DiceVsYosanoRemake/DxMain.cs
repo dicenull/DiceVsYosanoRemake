@@ -11,6 +11,8 @@ namespace DXLibWrapper
 
             Window.IsWindowMode = true;
 
+            DX.SetMainWindowText("Dice vs Yosano");
+
             var status = DX.DxLib_Init();
             if (status == -1)
             {

@@ -1,8 +1,4 @@
-﻿using DxLibUtilities;
-using DxLibDLL;
-using DxLogic;
-using Graphics;
-using Utilities;
+﻿using DxLogic;
 using DiceVsYosanoRemake.Scenes;
 
 public class Program
