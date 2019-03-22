@@ -12,7 +12,10 @@ namespace DiceVsYosanoRemake
 {
     class YosanoEnemy : CharacterBase<Circle>
     {
+        private Texture drawImage;
+
         private Texture yosanoImage;
+        private Texture damageImage;
         private Texture hojoImage = new Texture("Resource/Hojo.jpg");
         private Rectangle field;
 
@@ -22,9 +25,12 @@ namespace DiceVsYosanoRemake
 
         public List<HojoBall> Balls { get; private set; } = new List<HojoBall>();
 
-        public YosanoEnemy(Texture image, int hp, Rectangle gameField)
+        public YosanoEnemy(Texture image, Texture damage, int hp, Rectangle gameField)
         {
             yosanoImage = image;
+            damageImage = damage;
+            drawImage = yosanoImage;
+
             Hp = hp;
             field = gameField;
 
@@ -46,10 +52,19 @@ namespace DiceVsYosanoRemake
             canShot = true;
         }
 
+        public void Hit(int damage)
+        {
+            Hp -= damage;
+
+            if (Hp < 0) Hp = 0;
+
+            drawImage = damageImage;
+        }
+
         public void Update()
         {
             Area.Center -= movement;
-            yosanoImage.Rotated(rotation);
+            drawImage.Rotated(rotation);
 
             // 画面外に行ったら再配置
             if(    Area.Center.X < field.TopLeft.X 
@@ -87,7 +102,8 @@ namespace DiceVsYosanoRemake
 
         public override void Draw()
         {
-            yosanoImage.DrawAt(Area.Center);
+            drawImage.DrawAt(Area.Center);
+            drawImage = yosanoImage;
 
             Area.DrawFrame(Palette.White);
         }

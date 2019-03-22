@@ -13,11 +13,12 @@ namespace DiceVsYosanoRemake.Scenes
     {
         private YosanoEnemy yosano;
         private Texture yosanoImage = new Texture("Resource/Yosano.jpg");
+        private Texture damageImage = new Texture("Resource/DamageYosano.png");
 
         public VsYosanoGame(int yosanoHp)
             : base()
         {
-            yosano = new YosanoEnemy(yosanoImage, yosanoHp, gameField);
+            yosano = new YosanoEnemy(yosanoImage, damageImage, yosanoHp, gameField);
         }
 
         public override void Draw()
@@ -34,8 +35,13 @@ namespace DiceVsYosanoRemake.Scenes
 
         public override SceneBase<MyData> Update()
         {
-            base.Update();
+            var next = base.Update();
 
+            if(next != this)
+            {
+                return next;
+            }
+            
             yosano.Update();
 
             for (int i = yosano.Balls.Count - 1; i >= 0; i--)
@@ -55,13 +61,26 @@ namespace DiceVsYosanoRemake.Scenes
 
         protected override void HitDecision()
         {
-            foreach(var ball in yosano.Balls)
+            foreach (var player in players) 
             {
-                foreach(var player in players)
+                foreach (var ball in yosano.Balls)
                 {
                     if(player.Area.Intersects(ball.Area))
                     {
                         player.Hit(damage: 1);
+                    }
+                }
+
+                if(player.Area.Intersects(yosano.Area))
+                {
+                    player.Hit(damage: 1);
+                }
+
+                foreach(var bullet in player.Bullets)
+                {
+                    if(yosano.Area.Intersects(bullet.Area))
+                    {
+                        yosano.Hit(1);
                     }
                 }
             }
