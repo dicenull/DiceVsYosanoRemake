@@ -18,14 +18,13 @@ namespace DiceVsYosanoRemake.Scenes
 
         protected abstract void HitDecision();
 
-        // TODO: ゲームオーバー部と当たり判定部を分離してクラスに
-        public Game()
+        public Game(Vector2D spawnPos1, Vector2D spawnPos2)
         {
             var damageDice = new Texture("Resource/DamageDice.png");
             var spawnData = new[]
             {
-                new Rectangle(600, 400, 32, 32),
-                new Rectangle(100, 100, 32, 32)
+                new Rectangle(spawnPos1, 32, 32),
+                new Rectangle(spawnPos2, 32, 32)
             };
             var colors = new[]
             {

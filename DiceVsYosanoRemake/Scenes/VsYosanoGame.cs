@@ -16,7 +16,7 @@ namespace DiceVsYosanoRemake.Scenes
         private Texture damageImage = new Texture("Resource/DamageYosano.png");
 
         public VsYosanoGame(int yosanoHp)
-            : base()
+            : base(new Vector2D(600, 140), new Vector2D(100, 100))
         {
             yosano = new YosanoEnemy(yosanoImage, damageImage, yosanoHp, gameField);
         }

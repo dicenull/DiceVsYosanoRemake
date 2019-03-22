@@ -9,6 +9,10 @@ namespace DiceVsYosanoRemake.Scenes
 {
     class TwoPlayGame : Game
     {
+        public TwoPlayGame()
+            : base(new Vector2D(600, 400), new Vector2D(100, 100))
+        { }
+
         protected override void HitDecision()
         {
             for(int i = 0;i < 2;i++)
