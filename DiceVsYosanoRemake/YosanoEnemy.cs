@@ -106,8 +106,6 @@ namespace DiceVsYosanoRemake
         {
             drawImage.DrawAt(Area.Center);
             drawImage = yosanoImage;
-
-            Area.DrawFrame(Palette.White);
         }
     }
 }

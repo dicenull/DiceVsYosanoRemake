@@ -31,6 +31,8 @@ namespace DiceVsYosanoRemake.Scenes
             {
                 ball.Draw();
             }
+
+            gameText.Draw($"HP: {yosano.Hp}", new Vector2D(280, 30), Palette.Darkgray);
         }
 
         public override SceneBase<MyData> Update()
@@ -73,7 +75,8 @@ namespace DiceVsYosanoRemake.Scenes
 
                 if(player.Area.Intersects(yosano.Area))
                 {
-                    player.Hit(damage: 1);
+                    player.Hit(1);
+                    yosano.Hit(1);
                 }
 
                 foreach(var bullet in player.Bullets)

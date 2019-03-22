@@ -141,6 +141,8 @@ namespace DiceVsYosanoRemake.Scenes
             }
 
             item.Draw();
+
+            gameText.Draw(Data.GameMode.ToName(), new Vector2D(280, 10), Palette.Darkgray);
         }
     }
 }
