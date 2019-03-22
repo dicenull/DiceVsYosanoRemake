@@ -1,4 +1,6 @@
 ﻿using DxLogic;
+using Graphics;
+using Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +11,28 @@ namespace DiceVsYosanoRemake.Scenes
 {
     class VsYosanoGame : Game
     {
+        private YosanoEnemy yosano;
+        private Texture yosanoImage = new Texture("Resource/Yosano.jpg");
+
         public VsYosanoGame(int yosanoHp)
             : base()
         {
-
+            yosano = new YosanoEnemy(yosanoImage, yosanoHp, gameField);
         }
 
         public override void Draw()
         {
-            
+            base.Draw();
+
+            yosano.Draw();
         }
 
         public override SceneBase<MyData> Update()
         {
+            base.Update();
+
+            yosano.Update();
+
             return this;
         }
 
