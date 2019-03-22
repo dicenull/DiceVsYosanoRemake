@@ -41,7 +41,10 @@ namespace DiceVsYosanoRemake
                 bullet.Area.TopLeft += dir.ToVector() * Speed;
             }
 
-            statusTexture = diceList[(int)dir + 1];
+            if(statusTexture != damagedDice)
+            {
+                statusTexture = diceList[(int)dir + 1];
+            }
         }
 
         public void Hit(int damage)

@@ -44,6 +44,7 @@ namespace DiceVsYosanoRemake
 
             Area = new Circle(pos, radius);
             yosanoImage.Scaled(Area.Radius * 2 + 10, BasedOn.Width);
+            damageImage.Scaled(Area.Radius * 2 + 10, BasedOn.Width);
 
 
             movement = new Vector2D(Rnd.Next(1, 4), Rnd.Next(1, 4));
@@ -64,8 +65,9 @@ namespace DiceVsYosanoRemake
         public void Update()
         {
             Area.Center -= movement;
-            drawImage.Rotated(rotation);
-
+            yosanoImage.Rotated(rotation);
+            damageImage.Rotated(rotation);
+            
             // 画面外に行ったら再配置
             if(    Area.Center.X < field.TopLeft.X 
                 || Area.Center.Y < field.TopLeft.Y)
