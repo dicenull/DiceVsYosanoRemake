@@ -17,7 +17,7 @@ namespace DiceVsYosanoRemake.Scenes
 
         public Result()
         {
-            resultDices[Data.Winner].Scaled(3, 3);
+            resultDices[Data.Winner].Scaled(3);
 
             Data.TitleMusic.Play(PlayType.Loop);
         }

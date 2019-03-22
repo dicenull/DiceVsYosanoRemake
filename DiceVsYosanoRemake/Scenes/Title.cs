@@ -11,7 +11,7 @@ namespace DiceVsYosanoRemake.Scenes
         private Texture[] modeImages =
         {
             new Texture("Resource/TitleDice.png"),
-            new Texture("Resource/TitleYosano.jpg")
+            new Texture("Resource/Yosano.jpg")
         };
 
         private Text titleText = new Text(25);
@@ -21,10 +21,10 @@ namespace DiceVsYosanoRemake.Scenes
         {
             Data.GameMode = Mode.Normal;
 
-            var defaultSize = new Vector2D(240, 240);
+            var defaultSize = 240;
             foreach (var image in modeImages)
             {
-                image.Scaled(defaultSize);
+                image.Scaled(defaultSize, BasedOn.Height);
             }
 
             Data.TitleMusic = new Audio("Resource/title.mp3");

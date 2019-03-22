@@ -56,7 +56,7 @@ namespace DiceVsYosanoRemake
         public override void Draw()
         {
             // プレイヤー自身の描画
-            statusTexture.Scaled(new Vector2D(Area.Size.w, Area.Size.h));
+            statusTexture.Scaled(Area.Size.w, BasedOn.Width);
 
             statusTexture.Draw(Area.TopLeft);
 
