@@ -40,7 +40,7 @@ namespace DiceVsYosanoRemake
         private void initStatus()
         {
             var pos = field.BottomRight + new Vector2D(Rnd.Next(100), Rnd.Next(100));
-            var radius = Rnd.Next(40, 100);
+            var radius = Rnd.Next(40, 70);
 
             Area = new Circle(pos, radius);
             yosanoImage.Scaled(Area.Radius * 2 + 10, BasedOn.Width);

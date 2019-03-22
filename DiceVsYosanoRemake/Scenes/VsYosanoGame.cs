@@ -99,6 +99,13 @@ namespace DiceVsYosanoRemake.Scenes
 
             }
 
+            if(yosano.Hp <= 0)
+            {
+                Data.Winner = 0;
+
+                return true;
+            }
+
 
             return false;
         }
