@@ -25,6 +25,11 @@ namespace DiceVsYosanoRemake.Scenes
             base.Draw();
 
             yosano.Draw();
+
+            foreach(var ball in yosano.Balls)
+            {
+                ball.Draw();
+            }
         }
 
         public override SceneBase<MyData> Update()
@@ -33,12 +38,33 @@ namespace DiceVsYosanoRemake.Scenes
 
             yosano.Update();
 
+            for (int i = yosano.Balls.Count - 1; i >= 0; i--)
+            {
+                var ball = yosano.Balls[i];
+
+                ball.Move();
+
+                if (!gameField.Intersects(ball.Area))
+                {
+                    yosano.Balls.Remove(ball);
+                }
+            }
+
             return this;
         }
 
         protected override void HitDecision()
         {
-            
+            foreach(var ball in yosano.Balls)
+            {
+                foreach(var player in players)
+                {
+                    if(player.Area.Intersects(ball.Area))
+                    {
+                        player.Hit(damage: 1);
+                    }
+                }
+            }
         }
 
         protected override bool IsGameOver()

@@ -74,6 +74,7 @@
     <Compile Include="DicePlayer.cs" />
     <Compile Include="DxMain.cs" />
     <Compile Include="CharacterBase.cs" />
+    <Compile Include="HojoBall.cs" />
     <Compile Include="Mode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
